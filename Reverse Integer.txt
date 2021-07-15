@@ -1,0 +1,46 @@
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function(x) {
+    if(x===0){
+        return x;
+    }
+    x=x+"";
+    if(x[0]=="-") {
+        x=x.slice(1,x.length); 
+        let res=reverseStr(x);
+        res="-"+res;
+        return parseInt(res);
+    }
+    else if(x[x.length-1]=="0"){
+        let temp=x[x.length-1],flag=0;
+        for(let i=x.length-1;i>=0;i--){
+            if(x[i]==="0" && flag==0)
+                temp=i;
+            else
+                flag=1;
+        }
+        x=x.slice(0,temp);
+        let res=parseInt(reverseStr(x));
+        return res;
+    }
+    else{
+        let res=parseInt(reverseStr(x));
+        return res;
+    }
+    
+     function reverseStr(str){  
+        let output="";
+        for(let i=str.length-1;i>=0;i--){
+            output=output+str[i];
+        }
+         let check=parseInt(output);
+         if(check>=2147483648){
+             return "0";
+         }else
+             {
+                return output;
+             }
+    }
+};
